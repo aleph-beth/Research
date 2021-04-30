@@ -1,5 +1,5 @@
 # Research
-Docker with Python + Julia + R + Octave
+Docker with Miniconda with Python + Julia + R + Octave languages
 
 
 # BUILD 
