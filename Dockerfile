@@ -17,7 +17,9 @@ RUN 	export PATH=$HOME_CONDA/bin:$PATH \
 &&	chmod +x $HOME_CONDA/etc/profile.d/conda.sh \
 &&	$HOME_CONDA/etc/profile.d/conda.sh \	
 &&	conda create -n Research python=3.8 \
-&&	pip install jupyterlab featuretools compose evalml
+&&	conda install -c r r-essentials r-base r-irkernel \
+&& 	conda install -c conda-forge jupyterlab \
+&&	pip install jupyter jupyterlab featuretools compose evalml
 
 ### Add Julia 
 RUN 	export PATH=$HOME_CONDA/bin:$PATH \	
@@ -25,10 +27,16 @@ RUN 	export PATH=$HOME_CONDA/bin:$PATH \
 && 	julia -E "using Pkg; Pkg.add(\"IJulia\")" \
 &&	julia -E "using Pkg; Pkg.add(\"CUDA\")"
 
+### Add Node.js
+RUN 	 export PATH=$HOME_CONDA/bin:$PATH \
+&&	conda install -c conda-forge nodejs
 
 ### Add R
 RUN 	export PATH=$HOME_CONDA/bin:$PATH \
-&&	conda install r-essentials r-base \
-&&	Rscript -e "install.packages('IRkernel', ask = TRUE, repos = c(CRAN = 'https://cloud.r-project.org/'))" \
-&&	Rscript -e "IRkernel::installspec()"  \
-&&	jupyter labextension install @techrah/text-shortcuts
+&&	conda install -c r r-essentials r-base r-irkernel
+
+### Jupyter
+EXPOSE	8080
+# CMD 	export PATH=$HOME_CONDA/bin:$PATH \
+# &&	conda activate Research \
+# œ&& 	jupyter notebook --ip=*
