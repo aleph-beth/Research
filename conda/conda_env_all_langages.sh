@@ -30,3 +30,8 @@ conda install -y -c r r-irkernel
 # Julia
 conda install -y -c mjohnson541 julia
 julia -e 'using Pkg;Pkg.add("IJulia")'
+
+# Octave
+conda install -y -c conda-forge octave
+conda install -y octave_kernel
+conda install -y texinfo
