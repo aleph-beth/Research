@@ -33,5 +33,5 @@ julia -e 'using Pkg;Pkg.add("IJulia")'
 
 # Octave
 conda install -y -c conda-forge octave
-conda install -y octave_kernel
+pip install octave_kernel
 conda install -y texinfo
