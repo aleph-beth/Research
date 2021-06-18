@@ -1,5 +1,8 @@
 ENV_CONDA=$1
 
+bash miniconda3/bin/conda init
+bash 
+
 # Python and Jupyter Lab
 conda install -y -c conda-forge mamba
 conda create -y -n $ENV_CONDA
