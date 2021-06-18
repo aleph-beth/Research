@@ -17,12 +17,16 @@ RUN	chmod +x ./Miniconda3-latest-Linux-x86_64.sh \
 &&	bash ./Miniconda3-latest-Linux-x86_64.sh -b
 
 ### Add CONDA environement
-ADD 	--chown=user:user https://raw.githubusercontent.com/aleph-beth/Research/main/conda/conda_setup.sh $HOME_USER
-RUN 	bash conda_setup.sh
-RUN 	bash $HOME_USER/miniconda3/bin/activate \
+ADD 	--chown=user:user https://raw.githubusercontent.com/aleph-beth/Research/main/conda/conda_setup.sh .
+RUN 	chmod +x $HOME_USER/conda_setup.sh
+RUN 	bash $HOME_USER/conda_setup.sh \
+&& 	bash 
 
-ADD 	--chown=user:user https://raw.githubusercontent.com/aleph-beth/Research/main/conda/conda_setup.sh $HOME_USER
-RUN	$HOME_USER/conda_env_all_langages.sh Research
+ADD 	--chown=user:user https://raw.githubusercontent.com/aleph-beth/Research/main/conda/conda_env_all_langages.sh . 
+RUN 	$HOME_CONDA/bin/conda init bash \
+&& 	bash \
+&& 	chmod +x $HOME_USER/conda_env_all_langages.sh
+ENTRYPOINT ["bash", "conda_env_all_langages.sh", "Research", "$HOME_USER"]
 
 ### Jupyter
 EXPOSE	8080
