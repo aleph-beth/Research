@@ -38,3 +38,8 @@ julia -e 'using Pkg;Pkg.add("IJulia")'
 conda install -y -c conda-forge octave
 pip install octave_kernel
 conda install -y texinfo
+
+
+# Pytoch && OpenCV
+conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
+conda install -c conda-forge opencv
