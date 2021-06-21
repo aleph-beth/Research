@@ -20,6 +20,6 @@ USER user
 RUN conda init --all \
 && bash
 
-WORkDIR /home/user
+WORKDIR /home/user
 
 VOLUME /home/user/Dev
