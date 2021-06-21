@@ -4,4 +4,4 @@ conda activate Research
 
 # Pytoch && OpenCV
 conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
-conda install -c conda-forge opencv
+conda install -y -c conda-forge opencv
