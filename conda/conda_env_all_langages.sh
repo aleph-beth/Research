@@ -1,8 +1,5 @@
 ENV_CONDA=$1
 
-bash miniconda3/bin/conda init
-bash 
-
 # Python and Jupyter Lab
 conda install -y -c conda-forge mamba
 conda create -y -n $ENV_CONDA
@@ -26,8 +23,8 @@ cd ~/.local/share/jupyter/kernels/gopyter
 chmod +w ./kernel.json # in case copied kernel.json has no write permission
 sed "s|gopyter|$(go env GOPATH)/bin/gopyter|" < kernel.json.in > kernel.json
 
-# R
-conda install -y r-essentials r-base
+ R
+conda install -y -c r r
 conda install -y -c r r-irkernel
 
 # Julia
@@ -42,4 +39,4 @@ conda install -y texinfo
 
 # Pytoch && OpenCV
 conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
-conda install -c conda-forge opencv
+conda install -y -c conda-forge opencv
