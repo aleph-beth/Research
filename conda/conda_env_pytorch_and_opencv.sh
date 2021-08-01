@@ -1,14 +1,13 @@
 # Pytoch && OpenCV
+CUDA=$1
 
-conda env list
-
-if $1 == "GPU"
+if [ $CUDA == "GPU" ]
 then
 	conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 	julia -E 'using Pkg; Pkg.add("CUDA")'
 fi
 
-if $1 == "CPU"
+if [ $CUDA == "CPU" ]
 then
 	conda install pytorch torchvision torchaudio cpuonly -c pytorch
 fi
